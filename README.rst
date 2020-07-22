@@ -1,8 +1,8 @@
 SpeechRecognition
 =================
 
-* Fix for Bing API (uksouth Servers)
-* Fix to remove punctuation and convert to lower case.
+* Fix for Bing API > Microsoft Cognitive Services (uksouth Servers)
+* Fix for Bing to remove punctuation and convert to lower case.
 
 Library for performing speech recognition, with support for several engines and APIs, online and offline.
 
