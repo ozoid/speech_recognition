@@ -1141,7 +1141,7 @@ class Recognizer(AudioSource):
                 allow_caching = False  # don't allow caching, since monotonic time isn't available
         if expire_time is None or monotonic() > expire_time:  # caching not enabled, first credential request, or the access token from the previous one expired
             # get an access token using OAuth
-            credential_url = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken"
+            credential_url = "https://uksouth.api.cognitive.microsoft.com/sts/v1.0/issueToken"
             credential_request = Request(credential_url, data=b"", headers={
                 "Content-type": "application/x-www-form-urlencoded",
                 "Content-Length": "0",
@@ -1169,7 +1169,7 @@ class Recognizer(AudioSource):
             convert_width=2  # audio samples should be 16-bit
         )
 
-        url = "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?{}".format(urlencode({
+        url = "https://uksouth.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?{}".format(urlencode({
             "language": language,
             "locale": language,
             "requestid": uuid.uuid4(),
@@ -1202,7 +1202,15 @@ class Recognizer(AudioSource):
         # return results
         if show_all: return result
         if "RecognitionStatus" not in result or result["RecognitionStatus"] != "Success" or "DisplayText" not in result: raise UnknownValueError()
-        return result["DisplayText"]
+        ### remove capitals and punctuation ###
+        txtresult = str(result["DisplayText"])
+        txtresult = txtresult.lower()
+        table = str.maketrans(dict.fromkeys(string.punctuation))
+        new_result = txtresult.translate(table)
+        return new_result 
+        ### untouched - with captials and punctuation ###
+        #return result["DisplayText"]
+        
 
     def recognize_lex(self, audio_data, bot_name, bot_alias, user_id, content_type="audio/l16; rate=16000; channels=1", access_key_id=None, secret_access_key=None, region=None):
         """
