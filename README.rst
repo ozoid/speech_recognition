@@ -1,25 +1,8 @@
 SpeechRecognition
 =================
 
-.. image:: https://img.shields.io/pypi/v/SpeechRecognition.svg
-    :target: https://pypi.python.org/pypi/SpeechRecognition/
-    :alt: Latest Version
-
-.. image:: https://img.shields.io/pypi/status/SpeechRecognition.svg
-    :target: https://pypi.python.org/pypi/SpeechRecognition/
-    :alt: Development Status
-
-.. image:: https://img.shields.io/pypi/pyversions/SpeechRecognition.svg
-    :target: https://pypi.python.org/pypi/SpeechRecognition/
-    :alt: Supported Python Versions
-
-.. image:: https://img.shields.io/pypi/l/SpeechRecognition.svg
-    :target: https://pypi.python.org/pypi/SpeechRecognition/
-    :alt: License
-
-.. image:: https://api.travis-ci.org/Uberi/speech_recognition.svg?branch=master
-    :target: https://travis-ci.org/Uberi/speech_recognition
-    :alt: Continuous Integration Test Results
+* Fix for Bing API (uksouth Servers)
+* Fix to remove punctuation and convert to lower case.
 
 Library for performing speech recognition, with support for several engines and APIs, online and offline.
 
